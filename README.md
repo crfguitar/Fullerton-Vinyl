@@ -12,7 +12,8 @@ Get the latest Windows VST3 from the [Releases page](https://github.com/crfguita
 
 ## Features
 
-**Sound**
+### Sound
+
 - **Real platter physics, not pitch-shifting.** The input always goes into a delay line, and a read head moves through it at platter speed. Pitch and tempo drop together, the way they do on a real deck.
 - **Bit-exact when running.** While the platter is at full speed the output is identical to the input, with zero latency.
 - **Stop and start times** from 50 ms to 10 s, or **tempo-synced** to 1/16 up to 4 bars.
@@ -20,7 +21,8 @@ Get the latest Windows VST3 from the [Releases page](https://github.com/crfguita
 - **Fade** sets how much the level follows the speed. **Crackle** adds surface noise that slows down with the record. **Output** ranges from −24 to +12 dB.
 - **Click-free throughout.** Interpolation blends from linear to Catmull-Rom as the read head leaves the live signal. A gain smoothstep stops a DC offset from being held at standstill. A 40 ms equal-power crossfade relocks to the live input after spin-up.
 
-**UI and workflow**
+### UI and workflow
+
 - **Procedurally rendered deck.** Brushed-metal plinth, spun-aluminium platter with strobe dots that stand still at 33⅓, a record with moving reflections, a tonearm and machined knobs, all drawn per pixel at 2× and resizable.
 - **Live display** of RPM, pitch offset in semitones, and state (playing / braking / stopped).
 - **Host automation from any control.** Right-click any knob or button to open the host's parameter menu (for example, to create an automation clip in FL Studio).
@@ -36,7 +38,7 @@ build/VinylDevTool_artefacts/Release/VinylDevTool.exe <output-folder>
 ```
 
 | Area | What it checks |
-|---|---|
+| --- | --- |
 | DSP, at three curve settings | Bit-exact passthrough when running. Braking and spin-up finish on time. Brake, landing, spin-up and relock are click-free (largest sample step is reported). Silence when stopped. No NaN or Inf |
 | Stress | Random start/stop toggling with crackle stays finite and bounded. Repeated long partial ramps stay inside the delay line |
 | Processor | 600 blocks of random automation stay finite. State save/restore round-trips |
@@ -52,13 +54,14 @@ cmake --build build --config Release
 ```
 
 Outputs:
+
 - `build/FullertonVinyl_artefacts/Release/VST3/Fullerton Vinyl.vst3`. A post-build step also copies it to `C:/Program Files/Common Files/VST3` (turn this off with `-DFV_COPY_PLUGIN=OFF`).
 - `build/FullertonVinyl_artefacts/Release/Standalone/Fullerton Vinyl.exe`
 - `build/VinylDevTool_artefacts/Release/VinylDevTool.exe`
 
 ## Project layout
 
-```
+```text
 Source/
   DSP/VinylEngine.h     header-only engine: delay line, platter state machine, ramps, crackle
   PluginProcessor.*     JUCE processor, parameters, state
