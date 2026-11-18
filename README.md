@@ -6,6 +6,10 @@ A turntable stop/start effect, written in C++20 with [JUCE](https://juce.com) an
 
 *Rendered by the project's own snapshot tool.*
 
+## Download
+
+Get the latest Windows VST3 from the [Releases page](https://github.com/crfguitar/Fullerton-Vinyl/releases/latest). Extract the zip, copy the `Fullerton Vinyl.vst3` folder into `C:\Program Files\Common Files\VST3`, then rescan plug-ins in your DAW. The plug-in isn't code-signed, so Windows may warn the first time it loads.
+
 ## Features
 
 **Sound**
